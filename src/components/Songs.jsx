@@ -6,7 +6,7 @@ const trackList = [
     id: 1, 
     title: 'When You Sleep - My Bloody Valentine', 
     duration: '4:12',
-    url: '/my bloody valentine - when you sleep - Alexander Geogadzi (128k).mp3',
+    url: '/my bloody valentine - when you sleep - Alexander Geogaddi (128k).mp3',
     image: '/mybloodyvalentine.jpg',
     releaseDate: 'November 4, 1991',
     description: '"When You Sleep" is a song about love, longing, and the uncertainty that can come with being deeply attached to someone. The lyrics do not tell a clear story, which makes the song feel more like a collection of personal thoughts and emotions. There is a strong feeling of wanting to understand someone while also realizing that you can never fully know what they are thinking or feeling. The title itself gives the song an intimate feeling because sleeping represents a moment when someone is physically close but mentally distant. The dreamy guitars and soft vocals make the song feel almost like a dream or a memory. Everything sounds blurred and distant, which fits the feeling of being completely absorbed in someone. Rather than describing love in a direct way, the song captures the confusion, excitement, and vulnerability that can come with it.'

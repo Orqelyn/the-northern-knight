@@ -139,9 +139,21 @@
   }
 
   .about__text-container {
-    max-height: none;
-    overflow-y: visible;
-    padding-right: 0;
+    max-height: 40vh;
+    overflow-y: auto;
+    padding-right: var(--space-sm);
+  }
+  
+  .about__text-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  .about__text-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+  .about__text-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
   }
 
   .about__text {

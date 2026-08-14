@@ -23,6 +23,7 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   return (
+    <>
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="navbar__brand">
         <svg className="navbar__logo-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,6 +52,8 @@ export default function Navbar() {
         <span></span>
       </button>
 
+      </nav>
+
       {/* Mobile Menu */}
       <div className={`navbar__mobile ${mobileOpen ? 'navbar__mobile--open' : ''}`}>
         <div className="navbar__mobile-inner">
@@ -61,6 +64,6 @@ export default function Navbar() {
           <a href="#contact" className="navbar__mobile-link" onClick={() => setMobileOpen(false)}>Contact</a>
         </div>
       </div>
-    </nav>
+    </>
   );
 }
