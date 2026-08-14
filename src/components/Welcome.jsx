@@ -51,7 +51,7 @@ export default function Welcome({ onEnter }) {
       {/* Background image */}
       <div className="welcome__bg">
         <img
-          src="/landing%20page.jpeg"
+          src={`${import.meta.env.BASE_URL}landing%20page.jpeg`}
           alt=""
           className="welcome__bg-image"
         />

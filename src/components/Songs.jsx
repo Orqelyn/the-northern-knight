@@ -141,7 +141,7 @@ export default function Songs() {
       {activeTrack && (
         <div className="songs__global-player glass" data-reveal="fade">
           <div className="vinyl-record">
-            <img src={activeTrack.image} alt={activeTrack.title} className="vinyl-label" />
+            <img src={`${import.meta.env.BASE_URL}${activeTrack.image.slice(1)}`} alt={activeTrack.title} className="vinyl-label" />
             <div className="vinyl-hole"></div>
           </div>
           <div className="songs__playing-details">
@@ -161,7 +161,7 @@ export default function Songs() {
           </div>
           <audio 
             ref={audioRef}
-            src={activeTrack.url} 
+            src={`${import.meta.env.BASE_URL}${activeTrack.url.slice(1)}`}
             onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
             onLoadedMetadata={(e) => setDuration(e.target.duration)}
             onEnded={handleSongEnded}
@@ -192,7 +192,7 @@ export default function Songs() {
                 onClick={() => handlePlayToggle(track.id)}
               >
                 <div className="songs__card-image">
-                  <img src={track.image} alt={track.title} />
+                  <img src={`${import.meta.env.BASE_URL}${track.image.slice(1)}`} alt={track.title} />
                   <div className="songs__card-play">
                     {isTrackPlaying ? (
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

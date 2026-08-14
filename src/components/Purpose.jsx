@@ -102,7 +102,7 @@ export default function Purpose() {
           <div className="purpose__book-layout">
             <div className="purpose__book-sidebar">
               <div className="purpose__book-cover-container">
-                <img src="/images/book1.jpg" alt="The Warden Who Never Came Home, Book I" className="purpose__book-cover" />
+                <img src={`${import.meta.env.BASE_URL}images/book1.jpg`} alt="The Warden Who Never Came Home, Book I" className="purpose__book-cover" />
               </div>
               <div className="purpose__book-title">
                 The Warden Who Never Came Home<br/>

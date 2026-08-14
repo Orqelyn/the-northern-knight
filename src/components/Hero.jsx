@@ -33,7 +33,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="hero__bg">
         <img
-          src="/images/hero-bg.png"
+          src={`${import.meta.env.BASE_URL}images/hero-bg.png`}
           alt=""
           className="hero__bg-image"
           loading="eager"
