@@ -101,7 +101,9 @@ export default function Songs() {
   
   const handlePlayToggle = (id) => {
     if (playingId === id) {
-      setIsPlaying(!isPlaying);
+      setPlayingId(null);
+      setIsPlaying(false);
+      setCurrentTime(0);
     } else {
       setPlayingId(id);
       setCurrentTime(0);
