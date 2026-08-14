@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import useScrollReveal from './hooks/useScrollReveal';
 import Welcome from './components/Welcome';

@@ -11,12 +11,13 @@ export default function useScrollReveal(enabled = true) {
   useEffect(() => {
     if (!enabled) return;
 
+    let observer = null;
     // Small delay so the DOM is fully painted before we start observing
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll('[data-reveal]:not(.revealed)');
       if (!elements.length) return;
 
-      const observer = new IntersectionObserver(
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -39,14 +40,11 @@ export default function useScrollReveal(enabled = true) {
       );
 
       elements.forEach((el) => observer.observe(el));
-
-      // Store cleanup reference
-      timer._observer = observer;
     }, 150);
 
     return () => {
       clearTimeout(timer);
-      if (timer._observer) timer._observer.disconnect();
+      if (observer) observer.disconnect();
     };
   }, [enabled]);
 }
