@@ -139,9 +139,9 @@
   }
 
   .about__text-container {
-    max-height: none;
-    overflow-y: visible;
-    padding-right: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: var(--space-sm);
   }
 
   .about__text {
