@@ -169,6 +169,8 @@
   .navbar {
     top: var(--space-md);
     padding: 0.65rem 1.25rem;
+    width: calc(100% - 32px);
+    justify-content: space-between;
   }
 
   .navbar--scrolled {
@@ -246,11 +248,8 @@
 @media (max-width: 480px) {
   .navbar {
     top: var(--space-sm);
-    left: var(--space-md);
-    right: var(--space-md);
-    transform: none;
-    width: auto;
     padding: 0.6rem 1rem;
+    width: calc(100% - 24px);
   }
 
   .navbar--scrolled {

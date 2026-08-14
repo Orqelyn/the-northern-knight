@@ -12,6 +12,15 @@ export default function App() {
   const [entered, setEntered] = useState(false);
   useScrollReveal(entered);
 
+  useEffect(() => {
+    if (!entered) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [entered]);
+
   const handleEnter = () => {
     setEntered(true);
   };
