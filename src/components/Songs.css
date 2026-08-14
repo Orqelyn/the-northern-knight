@@ -264,8 +264,11 @@
   justify-content: center;
   position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  animation: spin 3.5s linear infinite;
   flex-shrink: 0;
+}
+
+.vinyl-record--playing {
+  animation: spin 3.5s linear infinite;
 }
 
 /* Grooves on the vinyl */
@@ -318,9 +321,44 @@
 .songs__playing-details {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   flex: 1;
   min-width: 0;
+}
+
+.songs__playing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.songs__playing-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.songs__resume-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  margin-left: var(--space-md);
+}
+
+.songs__resume-btn:hover {
+  background: var(--color-white);
+  color: var(--color-bg-primary);
+  transform: scale(1.05);
 }
 
 .songs__playing-label {

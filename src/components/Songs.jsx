@@ -99,12 +99,27 @@ export default function Songs() {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
   
-  const handlePlayToggle = (id) => {
+  const handleCardClick = (id) => {
     if (playingId === id) {
+      // Clicked active card again -> reset/clear track
       setPlayingId(null);
       setIsPlaying(false);
       setCurrentTime(0);
     } else {
+      // Play new track
+      setPlayingId(id);
+      setCurrentTime(0);
+      setIsPlaying(true);
+    }
+  };
+
+  const handlePlayBtnClick = (e, id) => {
+    e.stopPropagation(); // Don't trigger the card click
+    if (playingId === id) {
+      // Pause/resume active track
+      setIsPlaying(!isPlaying);
+    } else {
+      // Play new track
       setPlayingId(id);
       setCurrentTime(0);
       setIsPlaying(true);
@@ -141,7 +156,7 @@ export default function Songs() {
       
       {/* Global Player Box */}
       <div className="songs__global-player glass" data-reveal="fade">
-        <div className="vinyl-record">
+        <div className={`vinyl-record ${isPlaying ? 'vinyl-record--playing' : ''}`}>
           <img 
             src={activeTrack ? `${import.meta.env.BASE_URL}${activeTrack.image.slice(1)}` : `${import.meta.env.BASE_URL}favicon.svg`} 
             alt={activeTrack ? activeTrack.title : "The Northern Knight"} 
@@ -151,8 +166,31 @@ export default function Songs() {
           <div className="vinyl-hole"></div>
         </div>
         <div className="songs__playing-details">
-          <span className="songs__playing-label">NOW PLAYING</span>
-          <h4 className="songs__playing-track">{activeTrack ? activeTrack.title : "Select a track to play"}</h4>
+          <div className="songs__playing-header">
+            <div className="songs__playing-title-group">
+              <span className="songs__playing-label">NOW PLAYING</span>
+              <h4 className="songs__playing-track">{activeTrack ? activeTrack.title : "Select a track to play"}</h4>
+            </div>
+            
+            {activeTrack && (
+              <button 
+                className="songs__resume-btn"
+                onClick={() => setIsPlaying(!isPlaying)}
+                aria-label={isPlaying ? "Pause" : "Play"}
+              >
+                {isPlaying ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                ) : (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                )}
+              </button>
+            )}
+          </div>
             
             <div className="songs__progress-container">
               <span className="songs__progress-time">{formatTime(currentTime)}</span>
@@ -196,11 +234,14 @@ export default function Songs() {
               <div 
                 key={track.id} 
                 className={`songs__card glass ${isTrackPlaying ? 'songs__card--playing' : ''}`}
-                onClick={() => handlePlayToggle(track.id)}
+                onClick={() => handleCardClick(track.id)}
               >
                 <div className="songs__card-image">
                   <img src={`${import.meta.env.BASE_URL}${track.image.slice(1)}`} alt={track.title} />
-                  <div className="songs__card-play">
+                  <div 
+                    className="songs__card-play"
+                    onClick={(e) => handlePlayBtnClick(e, track.id)}
+                  >
                     {isTrackPlaying ? (
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <rect x="6" y="4" width="4" height="16"></rect>
