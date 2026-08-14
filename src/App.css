@@ -1,0 +1,26 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: opacity 0.8s ease;
+}
+
+.app--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.app--visible {
+  opacity: 1;
+  pointer-events: all;
+  animation: appFadeIn 1s ease forwards;
+}
+
+@keyframes appFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
