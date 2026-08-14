@@ -138,15 +138,19 @@ export default function Songs() {
       </div>
       
       {/* Global Player Box */}
-      {activeTrack && (
-        <div className="songs__global-player glass" data-reveal="fade">
-          <div className="vinyl-record">
-            <img src={`${import.meta.env.BASE_URL}${activeTrack.image.slice(1)}`} alt={activeTrack.title} className="vinyl-label" />
-            <div className="vinyl-hole"></div>
-          </div>
-          <div className="songs__playing-details">
-            <span className="songs__playing-label">NOW PLAYING</span>
-            <h4 className="songs__playing-track">{activeTrack.title}</h4>
+      <div className="songs__global-player glass" data-reveal="fade">
+        <div className="vinyl-record">
+          <img 
+            src={activeTrack ? `${import.meta.env.BASE_URL}${activeTrack.image.slice(1)}` : `${import.meta.env.BASE_URL}favicon.svg`} 
+            alt={activeTrack ? activeTrack.title : "The Northern Knight"} 
+            className="vinyl-label" 
+            style={{ opacity: activeTrack ? 1 : 0.2 }}
+          />
+          <div className="vinyl-hole"></div>
+        </div>
+        <div className="songs__playing-details">
+          <span className="songs__playing-label">NOW PLAYING</span>
+          <h4 className="songs__playing-track">{activeTrack ? activeTrack.title : "Select a track to play"}</h4>
             
             <div className="songs__progress-container">
               <span className="songs__progress-time">{formatTime(currentTime)}</span>
@@ -156,9 +160,11 @@ export default function Songs() {
                   style={{ width: `${duration > 0 ? (currentTime / duration) * 100 : 0}%` }}
                 ></div>
               </div>
-              <span className="songs__progress-time">{activeTrack.duration}</span>
+              <span className="songs__progress-time">{activeTrack ? activeTrack.duration : '0:00'}</span>
             </div>
           </div>
+        </div>
+        {activeTrack && (
           <audio 
             ref={audioRef}
             src={`${import.meta.env.BASE_URL}${activeTrack.url.slice(1)}`}
@@ -166,8 +172,7 @@ export default function Songs() {
             onLoadedMetadata={(e) => setDuration(e.target.duration)}
             onEnded={handleSongEnded}
           />
-        </div>
-      )}
+        )}
       
       <div className="songs__carousel-container" data-reveal="up" data-reveal-delay="150">
         <button 

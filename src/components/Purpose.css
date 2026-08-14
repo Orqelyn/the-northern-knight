@@ -314,8 +314,9 @@
   }
 
   .purpose__story-container {
-    max-height: 50vh;
-    padding-right: var(--space-sm);
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
   }
 
   .purpose__chapter-title {
