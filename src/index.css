@@ -62,6 +62,14 @@
   --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.04);
 }
 
+@media (max-width: 768px) {
+  :root {
+    --glass-blur: 4px;
+    --glass-blur-strong: 6px;
+    --glass-bg-strong: rgba(15, 15, 15, 0.4);
+  }
+}
+
 /* ===== RESET ===== */
 *, *::before, *::after {
   margin: 0;

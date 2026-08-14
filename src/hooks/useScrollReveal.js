@@ -34,7 +34,7 @@ export default function useScrollReveal(enabled = true) {
           });
         },
         {
-          threshold: 0.08,
+          threshold: 0.01,
           rootMargin: '0px 0px -40px 0px',
         }
       );

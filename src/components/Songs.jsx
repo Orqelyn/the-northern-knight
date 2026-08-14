@@ -234,7 +234,7 @@ export default function Songs() {
       </div>
 
       {activeTrack && activeTrack.description && (
-        <div className="songs__description glass" data-reveal="up" data-reveal-delay="200">
+        <div className="songs__description glass">
           <h4 className="songs__description-title">{activeTrack.title}</h4>
           {activeTrack.releaseDate && (
             <div className="songs__description-date">RELEASED: {activeTrack.releaseDate}</div>
