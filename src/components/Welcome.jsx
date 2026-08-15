@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './Welcome.css';
 
-export default function Welcome({ onEnter }) {
+export default function Welcome({ onStartEnter, onEnter }) {
   const [leaving, setLeaving] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const particlesRef = useRef(null);
@@ -42,6 +42,7 @@ export default function Welcome({ onEnter }) {
   }, []);
 
   const handleEnter = () => {
+    if (onStartEnter) onStartEnter();
     setLeaving(true);
     setTimeout(() => onEnter(), 900);
   };

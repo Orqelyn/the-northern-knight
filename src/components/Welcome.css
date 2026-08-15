@@ -237,6 +237,8 @@
   transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .welcome__enter-btn::before {

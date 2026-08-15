@@ -9,6 +9,7 @@ import ContentBox from './components/ContentBox';
 import Footer from './components/Footer';
 
 export default function App() {
+  const [startedEntering, setStartedEntering] = useState(false);
   const [entered, setEntered] = useState(false);
   useScrollReveal(entered);
 
@@ -21,14 +22,18 @@ export default function App() {
     return () => { document.body.style.overflow = ''; };
   }, [entered]);
 
+  const handleStartEnter = () => {
+    setStartedEntering(true);
+  };
+
   const handleEnter = () => {
     setEntered(true);
   };
 
   return (
     <>
-      {!entered && <Welcome onEnter={handleEnter} />}
-      <div className="app">
+      {!entered && <Welcome onStartEnter={handleStartEnter} onEnter={handleEnter} />}
+      <div className={`app ${startedEntering ? 'app--visible' : 'app--hidden'}`}>
         <Navbar />
         <SideNavigation />
         <main>
