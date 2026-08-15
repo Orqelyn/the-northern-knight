@@ -108,6 +108,7 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -116,6 +117,7 @@ button {
   cursor: pointer;
   font-family: inherit;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ul, ol {
