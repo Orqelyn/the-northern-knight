@@ -28,7 +28,7 @@ export default function App() {
   return (
     <>
       {!entered && <Welcome onEnter={handleEnter} />}
-      <div className={`app ${entered ? 'app--visible' : 'app--hidden'}`}>
+      <div className="app">
         <Navbar />
         <SideNavigation />
         <main>
