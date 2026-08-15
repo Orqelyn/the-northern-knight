@@ -1,6 +1,34 @@
+import { useRef, useEffect } from 'react';
 import './About.css';
 
 export default function About() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const playVideo = () => {
+      if (videoRef.current && videoRef.current.paused) {
+        videoRef.current.play().catch(() => {
+          // Silent catch for auto-play restrictions
+        });
+      }
+    };
+
+    // Attempt to play on mount
+    playVideo();
+
+    // Listen for tab visibility changes to resume video
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        playVideo();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <div className="about" id="about">
       <div className="section-header" data-reveal="up">
@@ -12,12 +40,16 @@ export default function About() {
         <div className="about__grid">
           <div className="about__media-container" data-reveal="left" data-reveal-delay="200">
             <video 
+              ref={videoRef}
               src="/about-boomerang.mp4" 
               className="about__media"
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
+              disablePictureInPicture
+              onEnded={(e) => e.target.play()}
             />
           </div>
           
