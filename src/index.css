@@ -97,7 +97,6 @@ body {
   min-height: 100vh;
 }
 
-img {
 img, video {
   max-width: 100%;
   display: block;
