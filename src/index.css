@@ -103,6 +103,15 @@ img {
   /* Dark fantasy grunge effect for all images */
   filter: grayscale(100%) contrast(1.15) brightness(0.85);
   transition: filter var(--transition-base);
+  
+  /* Prevent image downloading and dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 
 a {

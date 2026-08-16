@@ -5,25 +5,33 @@ export default function About() {
   const videoRef = useRef(null);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let lastHiddenTime = 0;
+
     const playVideo = () => {
-      if (videoRef.current && videoRef.current.paused) {
-        videoRef.current.play().catch(() => {
-          // Silent catch for auto-play restrictions
-        });
+      if (video.paused) {
+        video.play().catch(() => {});
       }
     };
 
-    // Attempt to play on mount
     playVideo();
 
-    // Listen for tab visibility changes to resume video
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
+      if (document.visibilityState === 'hidden') {
+        lastHiddenTime = performance.now();
+      } else if (document.visibilityState === 'visible') {
+        if (lastHiddenTime > 0) {
+          const timeAway = (performance.now() - lastHiddenTime) / 1000;
+          video.currentTime = (video.currentTime + timeAway) % (video.duration || 1);
+        }
         playVideo();
       }
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
+
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
@@ -49,7 +57,6 @@ export default function About() {
               playsInline
               preload="auto"
               disablePictureInPicture
-              onEnded={(e) => e.target.play()}
             />
           </div>
           

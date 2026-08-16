@@ -157,12 +157,13 @@ export default function Songs() {
       {/* Global Player Box */}
       <div className="songs__global-player glass" data-reveal="fade">
         <div className={`vinyl-record ${isPlaying ? 'vinyl-record--playing' : ''}`}>
-          <img 
-            src={activeTrack ? `${import.meta.env.BASE_URL}${activeTrack.image.slice(1)}` : `${import.meta.env.BASE_URL}favicon.svg`} 
-            alt={activeTrack ? activeTrack.title : "The Northern Knight"} 
-            className="vinyl-label" 
-            style={{ opacity: activeTrack ? 1 : 0.2 }}
-          />
+          {activeTrack && (
+            <img 
+              src={`${import.meta.env.BASE_URL}${activeTrack.image.slice(1)}`} 
+              alt={activeTrack.title} 
+              className="vinyl-label" 
+            />
+          )}
           <div className="vinyl-hole"></div>
         </div>
         <div className="songs__playing-details">
