@@ -98,6 +98,7 @@ body {
 }
 
 img {
+img, video {
   max-width: 100%;
   display: block;
   /* Dark fantasy grunge effect for all images */

@@ -258,9 +258,9 @@
   }
 
   .hero__btn {
-    width: 100%;
+    width: auto;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 2rem;
     font-size: 0.72rem;
   }
 }
