@@ -1,41 +1,6 @@
-import { useRef, useEffect } from 'react';
 import './About.css';
 
 export default function About() {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    let lastHiddenTime = 0;
-
-    const playVideo = () => {
-      if (video.paused) {
-        video.play().catch(() => {});
-      }
-    };
-
-    playVideo();
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden') {
-        lastHiddenTime = performance.now();
-      } else if (document.visibilityState === 'visible') {
-        if (lastHiddenTime > 0) {
-          const timeAway = (performance.now() - lastHiddenTime) / 1000;
-          video.currentTime = (video.currentTime + timeAway) % (video.duration || 1);
-        }
-        playVideo();
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, []);
 
   return (
     <div className="about" id="about">
@@ -47,16 +12,10 @@ export default function About() {
       <div className="about__content glass" data-reveal="up" data-reveal-delay="100">
         <div className="about__grid">
           <div className="about__media-container" data-reveal="left" data-reveal-delay="200">
-            <video 
-              ref={videoRef}
-              src="/about-boomerang.mp4" 
+            <img 
+              src="/orqelyn foto.jpeg" 
               className="about__media"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              disablePictureInPicture
+              alt="Orqelyn the Knight"
             />
           </div>
           
